@@ -20,9 +20,9 @@ export const TodoApp = () => {
 
       <ul className="list-group list-group-flush">
         {
-          todos.map(todo => (
+          todos.map((todo, idx) => (
             <li key={todo.id} className="list-group-item">
-              {todo.desc}
+              {idx + 1}{todo.desc}
             </li>
           ))
         }
