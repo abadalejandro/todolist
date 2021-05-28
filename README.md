@@ -1,6 +1,7 @@
 #This app was made with:
 React js
 Typescrip
+Props
 UseRef
 UseReducer
 Bootstrap
