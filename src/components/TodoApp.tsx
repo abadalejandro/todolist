@@ -1,22 +1,29 @@
-import { useReducer, useRef } from 'react';
+import { useReducer, useEffect } from 'react';
 import './TodoApp.css';
 import { ITodo, IAction } from '../interfaces/interfaces';
 import { todoReducer } from '../reducer/todoReducer';
 import { useForm } from '../hooks/useForm';
 
 
-const init = ():ITodo[] => {
-  return [{
-    id: new Date().getTime(),
-    desc: 'Learn React',
-    done: false,
-  }];
+const init = ():ITodo[]|[] => {
+  const todos = localStorage.getItem('todos') || '';
+
+
+  return  JSON.parse(todos) || null;
+
 }
 
 export const TodoApp = () => {
   // const inputRef = useRef('input');
   const [todos, dispatch] = useReducer(todoReducer, [], init);
   const [{description}, handleInputChange, reset] = useForm({description:''});
+  
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+    
+  }, [todos])
+  
+  
   console.log(description);
   
 
