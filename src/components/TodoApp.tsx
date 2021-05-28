@@ -1,17 +1,44 @@
-import { useReducer } from 'react';
+import { useReducer, useRef } from 'react';
 import './TodoApp.css';
-import { ITodo } from '../interfaces/interfaces';
+import { ITodo, IAction } from '../interfaces/interfaces';
 import { todoReducer } from '../reducer/todoReducer';
+import { useForm } from '../hooks/useForm';
 
 const initialState: ITodo[] = [{
   id: new Date().getTime(),
   desc: 'Learn React',
   done: false,
-}]
+}];
 
 export const TodoApp = () => {
-  const [todos] = useReducer(todoReducer, initialState);
-  console.log(todos);
+  // const inputRef = useRef('input');
+  const [todos, dispatch] = useReducer(todoReducer, initialState);
+  const [{description}, handleInputChange, reset] = useForm({description:''});
+  console.log(description);
+  
+
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    if(!description.trim()) return;
+
+    const newTodo: ITodo = {
+      id: new Date().getTime(),
+      desc: description,
+      done: false,
+    };
+    const action:IAction = {
+      type: 'add',
+      payload: newTodo
+    };
+
+    dispatch(action);
+    reset();
+    // document.querySelector('input')?.select();
+
+  }
+
+ 
+
 
   return (
     <div>
@@ -34,9 +61,9 @@ export const TodoApp = () => {
         <div className="col-5">
           <h4>Add Todo</h4>
           <hr />
-          <form action="post" className="d-grid gap-2">
-            <input className="form-control" type="text" name="description" placeholder="Learn..." autoCapitalize="off" />
-            <button className="btn btn-outline-primary mt-1">Add</button>
+          <form onSubmit={handleSubmit} className="d-grid gap-2">
+            <input className="form-control" value={description} type="text" name="description" placeholder="Learn..." autoCapitalize="off" onChange={handleInputChange}/>
+            <button type="submit" className="btn btn-outline-primary mt-1">Add</button>
           </form>
         </div>
 

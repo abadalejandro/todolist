@@ -1,3 +1,10 @@
+#This app was made with:
+React js
+Typescrip
+UseRef
+UseReducer
+Bootstrap
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
