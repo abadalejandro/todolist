@@ -4,15 +4,18 @@ import { ITodo, IAction } from '../interfaces/interfaces';
 import { todoReducer } from '../reducer/todoReducer';
 import { useForm } from '../hooks/useForm';
 
-const initialState: ITodo[] = [{
-  id: new Date().getTime(),
-  desc: 'Learn React',
-  done: false,
-}];
+
+const init = ():ITodo[] => {
+  return [{
+    id: new Date().getTime(),
+    desc: 'Learn React',
+    done: false,
+  }];
+}
 
 export const TodoApp = () => {
   // const inputRef = useRef('input');
-  const [todos, dispatch] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(todoReducer, [], init);
   const [{description}, handleInputChange, reset] = useForm({description:''});
   console.log(description);
   
