@@ -57,10 +57,17 @@ export const TodoApp = () => {
     dispatch(action);
   } 
 
+  const handleToggle = (todoId:number) => {
+    dispatch({
+      type: 'toggle',
+      payload: todoId
+    });
+  }
+
 
   return (
     <div>
-      <h1>TodoApp <span className="badge bg-danger rounded-pill">{todos.length}</span></h1>
+      <h1 className="text-left">TodoApp <span className="badge bg-danger rounded-pill">{todos.length}</span></h1>
       <hr />
 
       <div className="row">
@@ -69,7 +76,7 @@ export const TodoApp = () => {
             {
               todos.map((todo, idx) => (
                 <li key={todo.id} className="list-group-item">
-                  <p className="text-center" >{idx + 1} - {todo.desc}</p>
+                  <p className={`${todo.done && 'complete'}`} onClick={() => handleToggle(todo.id)} >{idx + 1} - {todo.desc}</p>
                   <button className="btn btn-danger" onClick={() => handleDelete(todo.id)}>Delete</button>
                 </li>
               ))
