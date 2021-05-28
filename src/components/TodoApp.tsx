@@ -6,10 +6,9 @@ import { useForm } from '../hooks/useForm';
 
 
 const init = ():ITodo[]|[] => {
-  const todos = localStorage.getItem('todos') || '';
+  const todos:any = localStorage.getItem('todos') || [];
 
-
-  return  JSON.parse(todos) || null;
+  return  JSON.parse(todos) || [];
 
 }
 
