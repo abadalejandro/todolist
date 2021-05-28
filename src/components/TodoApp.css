@@ -1,7 +1,22 @@
-body{
-   padding: 50px; 
+body {
+  padding: 50px;
 }
 
 .badge {
-   font-size: .40em;
+  font-size: 0.4em;
+}
+
+p {
+   cursor: pointer;
+  margin: 0;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.complete{
+   text-decoration: line-through;
 }
