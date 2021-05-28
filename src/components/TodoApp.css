@@ -4,6 +4,7 @@ body {
 
 .badge {
   font-size: 0.4em;
+  position: absolute;
 }
 
 p {
