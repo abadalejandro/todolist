@@ -46,7 +46,16 @@ export const TodoApp = () => {
 
   }
 
- 
+  const handleDelete = (todoId:number) => {
+    if(!todoId) return;
+    
+    const action:IAction = {
+      type: 'delete',
+      payload: todoId
+    };
+    
+    dispatch(action);
+  } 
 
 
   return (
@@ -61,7 +70,7 @@ export const TodoApp = () => {
               todos.map((todo, idx) => (
                 <li key={todo.id} className="list-group-item">
                   <p className="text-center" >{idx + 1} - {todo.desc}</p>
-                  <button className="btn btn-danger">Delete</button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(todo.id)}>Delete</button>
                 </li>
               ))
             }
@@ -72,7 +81,7 @@ export const TodoApp = () => {
           <hr />
           <form onSubmit={handleSubmit} className="d-grid gap-2">
             <input className="form-control" value={description} type="text" name="description" placeholder="Learn..." autoCapitalize="off" onChange={handleInputChange}/>
-            <button type="submit" className="btn btn-outline-primary mt-1">Add</button>
+            <button type="submit" className="btn btn-outline-primary mt-1">Add</button>         
           </form>
         </div>
 
