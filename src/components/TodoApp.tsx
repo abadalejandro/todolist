@@ -7,10 +7,10 @@ import './TodoApp.css';
 
 const init = (): ITodo[] | [] => {
   const todos: any = localStorage.getItem('todos') || [];
-  if(todos.length !== 0){
-    return JSON.parse(todos) || [];
-  }else{
+  if (todos.lenght <= 0) {
     return [];
+   } else {
+    return JSON.parse(todos);
   }
 }
 
