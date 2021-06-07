@@ -7,7 +7,11 @@ import './TodoApp.css';
 
 const init = (): ITodo[] | [] => {
   const todos: any = localStorage.getItem('todos') || [];
-  return JSON.parse(todos) || [];
+  if (todos.lenght <= 0) {
+    return [];
+   } else {
+    return JSON.parse(todos);
+  }
 }
 
 export const TodoApp = () => {
