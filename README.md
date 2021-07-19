@@ -1,11 +1,12 @@
 #This app was made with:
 React js
 Typescrip
+Redux
 Props
 UseRef
 UseReducer
 Bootstrap
-
+localStorage
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
