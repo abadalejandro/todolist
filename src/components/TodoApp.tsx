@@ -9,7 +9,7 @@ const init = (): ITodo[] | [] => {
   const todos: any = localStorage.getItem('todos') || [];
   if (todos.length <= 0) {
     return [];
-   } else {
+  } else {
     return JSON.parse(todos);
   }
 }
@@ -51,19 +51,28 @@ export const TodoApp = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-left">TodoApp
-        <span className="badge bg-danger rounded-pill">{todos.length}</span>
-      </h1>
-      <hr />
-      <div className="row">
-        <div className="col-7">
-          <TodoList todos={todos} handleDelete={handleDelete} handleToggle={handleToggle} />
-        </div>
-        <div className="col-5">
-          <TodoAdd handleAddTodo={handleAddTodo} />
+    <div className="d-flex justify-content-center container pt-sm-2">
+      <div id="container" className="w-75">
+
+        <div className="row sticky-top bg-warning bg-gradient border border-1 p-2 rounded-2">
+
+          <div className="col-12 col-sm-6 ">
+            <h1 className="text-left">
+              TodoApp
+              <span className="badge bg-danger rounded-pill">{todos.length}</span>
+            </h1>
+          </div>
+
+          <div className="col-12 col-sm-6 pt-2">
+            <TodoAdd handleAddTodo={handleAddTodo} />
+          </div>
         </div>
 
+        <div className="row">
+          <div className="col-12">
+            <TodoList todos={todos} handleDelete={handleDelete} handleToggle={handleToggle} />
+          </div>
+        </div>
       </div>
     </div>
   )

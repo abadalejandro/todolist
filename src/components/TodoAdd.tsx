@@ -24,11 +24,11 @@ export const TodoAdd = ({ handleAddTodo }: IProps) => {
 
     return (
         <>
-            <h4>Add Todo</h4>
-            <hr />
+            {/* <h4>Add Todo</h4> */}
+            {/* <hr /> */}
             <form onSubmit={handleSubmit} className="d-grid gap-2">
-                <input className="form-control" value={description} type="text" name="description" placeholder="Learn..." autoCapitalize="off" onChange={handleInputChange} />
-                <button type="submit" className="btn btn-outline-primary mt-1" >Add</button>
+                <input className="form-control" value={description} type="text" name="description" placeholder="Write here and press enter key..." autoCapitalize="off" onChange={handleInputChange} />
+                {/* <button type="submit" className="btn btn-outline-primary mt-1" >Add</button> */}
             </form>
         </>
     )
