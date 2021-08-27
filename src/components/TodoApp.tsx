@@ -56,7 +56,7 @@ export const TodoApp = () => {
 
         <div className="row sticky-top bg-warning bg-gradient border border-1 p-2 rounded-2">
 
-          <div className="col-12 col-sm-6 ">
+          <div className="col-12 col-sm-6 ">         
             <h1 className="text-left">
               TodoList
               <span className="badge bg-danger rounded-pill">{todos.length}</span>
